@@ -1,10 +1,8 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-
 connection_string = 'postgresql+psycopg2://postgres:pwd123qwe@localhost:5432/genome'
 db = create_engine(connection_string)
-
 
 chromosomes_df = pd.read_sql(
   'SELECT DISTINCT dm."own_chromosome_index" \

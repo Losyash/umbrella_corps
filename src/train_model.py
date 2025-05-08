@@ -39,9 +39,7 @@ from sklearn.metrics import (
 )
 from src.utils import load_data
 
-
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
-
 
 def main():
   N_BATCHES = 8

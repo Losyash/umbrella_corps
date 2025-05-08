@@ -10,7 +10,6 @@ connection_string = 'postgresql+psycopg2://postgres:pwd123qwe@localhost:5432/gen
 db = create_engine(connection_string)
 # <------------------------------------------------------------------ Подключение к БД
 
-
 # Загрузка списка хромосом ---------------------------------------------------------->
 chromosome_ids_df = pd.read_sql(
   'SELECT DISTINCT dm."Chromosome_Index_Own" \
@@ -21,7 +20,6 @@ chromosome_ids_df = pd.read_sql(
 chromosome_ids = chromosome_ids_df['Chromosome_Index_Own'].values
 # <---------------------------------------------------------- Загрузка списка хромосом
 
-
 # Загрузка списка типов рака -------------------------------------------------------->
 cancer_types_df = pd.read_sql(
   'SELECT DISTINCT dm."Cancer_Type_Own" \
@@ -31,7 +29,6 @@ cancer_types_df = pd.read_sql(
 
 cancer_types = cancer_types_df['Cancer_Type_Own'].values
 # <-------------------------------------------------------- Загрузка списка типов рака
-
 
 # Загрузка списка хромосом и формирование справочников ------------------------------>
 gene_chromosomes = {}
@@ -65,7 +62,6 @@ for chromosome_id in chromosome_ids:
   # <-------------------------------------------------------------------- Для проверки
 # <------------------------------ Загрузка списка хромосом и формирование справочников
 
-
 # Генерация карты мутаций ----------------------------------------------------------->
 def create_gene_arrays(chromosome_ids, gene_chromosomes, matrix_n):
   gene_arrays = {}
@@ -81,7 +77,6 @@ def create_gene_arrays(chromosome_ids, gene_chromosomes, matrix_n):
 
   return gene_arrays
 # <----------------------------------------------------------- Генерация карты мутаций
-
 
 # Генерация карты мутаций ----------------------------------------------------------->
 for cancer_type in cancer_types:

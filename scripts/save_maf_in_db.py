@@ -2,7 +2,6 @@ from sqlalchemy import create_engine
 from src.utils import get_filelist
 import pandas as pd
 
-
 files_path = 'data/raw/tcga/tcga_maf_1'
 files = get_filelist(files_path, ext='.csv')
 
