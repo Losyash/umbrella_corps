@@ -1,0 +1,6 @@
+/.vs
+/.ipynb_checkpoints
+/.virtual_documents
+/data/raw
+/models
+__pycache__
