@@ -273,7 +273,8 @@ def main():
     f'{history_path}/{BASE_MODEL}/{dataset}/predict_{dataset}_{datetime.now().strftime("%d.%m.%Y-%H.%M")}.csv',
     # index=False
   )
-
+  # <-------------------------------------------------- Оценка модели на тестовых данных
+  
   # Отчет по классификации ------------------------------------------------------------>
   report_scores = classification_report(y_test_list, y_pred_list, digits=4, output_dict=True)
 
