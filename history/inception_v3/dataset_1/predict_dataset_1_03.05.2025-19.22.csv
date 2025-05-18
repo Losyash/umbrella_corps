@@ -1,2 +1,2 @@
-,accuracy,precision_micro,precision_macro,precision_weighted,recall_micro,recall_macro,recall_weighted,f1_micro,f1_macro,f1_weighted
+epoch,accuracy,precision_micro,precision_macro,precision_weighted,recall_micro,recall_macro,recall_weighted,f1_micro,f1_macro,f1_weighted
 0,0.9898523985239852,0.9898523985239852,0.994042353858738,0.9907078405176708,0.9898523985239852,0.9645036347667926,0.9898523985239852,0.9898523985239852,0.9779407215375362,0.9897880092871888

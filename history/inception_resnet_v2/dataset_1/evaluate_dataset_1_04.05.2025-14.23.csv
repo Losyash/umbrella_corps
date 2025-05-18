@@ -1,2 +1,2 @@
-,accuracy,f1_beta_macro,f1_beta_micro,f1_macro,f1_micro,fn,fp,loss,precision,recall,tn,tp
+epoch,accuracy,f1_beta_macro,f1_beta_micro,f1_macro,f1_micro,fn,fp,loss,precision,recall,tn,tp
 0,0.9963099360466003,0.9876818656921387,0.9963098764419556,0.9876818656921387,0.9963098764419556,13.0,0.0,0.03174734115600586,1.0,0.9880073666572571,34688.0,1071.0
