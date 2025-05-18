@@ -6,10 +6,9 @@ import numpy as np
 import os
 import pandas as pd
 import requests
-
+import scipy.stats
 
 gds_endpoint = 'https://api.gdc.cancer.gov/data'
-
 
 # Скачивание файла ------------------------------------------------------------------>
 def download(url, save_dir):
@@ -30,12 +29,10 @@ def download(url, save_dir):
       bar.update(size)
 # <------------------------------------------------------------------ Скачивание файла
 
-
 # Получение списка файлов в каталоге ------------------------------------------------>
 def get_filelist(path, ext='.*'):
   return [f for f in listdir(path) if isfile(join(path, f)) and f.endswith(ext)]
 # <------------------------------------------------ Получение списка файлов в каталоге
-
 
 # Загрузка данных с портала GDC ----------------------------------------------------->
 def get_from_gdc(file, save_dir, field='File UUID'):
@@ -44,7 +41,6 @@ def get_from_gdc(file, save_dir, field='File UUID'):
   for l in data[field]:
     download(f'{gds_endpoint}/{l}', save_dir)
 # <----------------------------------------------------- Загрузка данных с портала GDC
-
 
 # Объединить данные из MAF файлов --------------------------------------------------->
 def concat_maf_files(path, files, cancer_type):
@@ -62,7 +58,6 @@ def concat_maf_files(path, files, cancer_type):
   print(len(pd.concat(dfs, axis=0)), dfs_length)
   return pd.concat(dfs, axis=0)
 # <--------------------------------------------------- Объединить данные из MAF файлов
-
 
 # Загрузка данных для модели ---------------------------------------------------------->
 def load_data(input_path, image_width, image_height):
@@ -94,3 +89,18 @@ def load_data(input_path, image_width, image_height):
   
   return np.array(cancer_data), np.array(cancer_labels), cancer_classes
 # <---------------------------------------------------------- Загрузка данных для модели
+
+# Вычисление доверительного интервала -------------------------------------------------->
+def calculate_ci(accuracy, test_count, confidence=0.95):
+  z = scipy.stats.norm.ppf((1 + confidence) / 2.0)
+
+  ci_length = z * np.sqrt((accuracy * (1 - accuracy)) / test_count)
+
+  ci_lower = round(accuracy - ci_length, 4)
+  ci_upper = round(accuracy + ci_length, 4)
+
+  ci = round(ci_upper - ci_lower, 4)
+  print(ci_lower, ci_upper, ci)
+
+  return ci
+# <-------------------------------------------------- Вычисление доверительного интервала
